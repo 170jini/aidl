@@ -29,6 +29,7 @@ public class MainActivity extends Activity {
         @Override
         public void onServiceDisconnected(ComponentName name) {
 
+            Log.i("SSB_TEST", "onServiceDisconnected..");
             if(mService != null){
                 try {
                     mService.unregisterCallback(mCallbcak);
@@ -41,6 +42,7 @@ public class MainActivity extends Activity {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
 
+            Log.i("SSB_TEST", "onServiceConnected..");
             if(service != null){
                 mService = IRemoteService.Stub.asInterface(service);
                 try {
@@ -53,30 +55,40 @@ public class MainActivity extends Activity {
     };
 
     private void startServiceBind(){
+        Log.i("SSB_TEST", "startServiceBind..");
         bindService(ServiceIntentBuilder.buildTestBindIntent(), mConntection, Context.BIND_AUTO_CREATE);
     }
 
     private void stopServiceBind(){
+        Log.i("SSB_TEST", "stopServiceBind..");
         unbindService(mConntection);
-        stopService(ServiceIntentBuilder.buildTestBindIntent());
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Log.i("SSB_TEST", "onCreate..");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
     }
 
     @Override
-    protected void onResume() {
+    protected void onStart() {
+        Log.i("SSB_TEST", "onStart..");
         startServiceBind();
-        super.onResume();
+        super.onStart();
     }
 
     @Override
     protected void onStop() {
+        Log.i("SSB_TEST", "onStop..");
         stopServiceBind();
         super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.i("SSB_TEST", "onDestroy..");
+        super.onDestroy();
     }
 }
