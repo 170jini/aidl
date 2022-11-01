@@ -52,15 +52,13 @@ public class MainActivity extends Activity {
     };
 
     private void startServiceBind(){
-        startService(new Intent(this, TestService.class));
-        Intent service = new Intent(getApplicationContext(), TestService.class);
-        service.setAction(TestService.INTENT_ACTION);
+        Intent service = new Intent("com.sim.myth.TestService.Bind").setPackage("com.sim.myth");
         bindService(service, mConntection, Context.BIND_AUTO_CREATE);
     }
 
     private void stopServiceBind(){
         unbindService(mConntection);
-        stopService(new Intent(this, TestService.class));
+        stopService(new Intent("com.sim.myth.TestService.Bind").setPackage("com.sim.myth"));
     }
 
     @Override
