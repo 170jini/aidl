@@ -3,7 +3,6 @@ package com.sim.steel;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -12,6 +11,7 @@ import android.util.Log;
 
 import com.sim.myth.IRemoteService;
 import com.sim.myth.IRemoteServiceCallback;
+import com.sim.myth.ServiceIntentBuilder;
 
 public class MainActivity extends Activity {
 
@@ -53,13 +53,12 @@ public class MainActivity extends Activity {
     };
 
     private void startServiceBind(){
-        Intent service = new Intent("com.sim.myth.TestService.Bind").setPackage("com.sim.myth");
-        bindService(service, mConntection, Context.BIND_AUTO_CREATE);
+        bindService(ServiceIntentBuilder.buildTestBindIntent(), mConntection, Context.BIND_AUTO_CREATE);
     }
 
     private void stopServiceBind(){
         unbindService(mConntection);
-        stopService(new Intent("com.sim.myth.TestService.Bind").setPackage("com.sim.myth"));
+        stopService(ServiceIntentBuilder.buildTestBindIntent());
     }
 
     @Override
