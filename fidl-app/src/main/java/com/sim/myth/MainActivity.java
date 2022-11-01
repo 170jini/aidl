@@ -54,7 +54,7 @@ public class MainActivity extends Activity {
     private void startServiceBind(){
         startService(new Intent(this, TestService.class));
         Intent service = new Intent(getApplicationContext(), TestService.class);
-        service.setPackage(TestService.INTENT_ACTION);
+        service.setAction(TestService.INTENT_ACTION);
         bindService(service, mConntection, Context.BIND_AUTO_CREATE);
     }
 

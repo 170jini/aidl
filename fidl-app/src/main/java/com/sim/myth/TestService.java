@@ -40,7 +40,7 @@ public class TestService extends Service {
             Log.d("SSB_TEST", "action is equals.. :: " + intent.getAction());
             return serviceImplementation;
         }
-        Log.d("SSB_TEST", "action is not equals..");
+        Log.d("SSB_TEST", "action is not equals.. :: " + intent.getAction());
         return null;
     }
 
