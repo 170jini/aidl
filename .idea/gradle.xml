@@ -11,7 +11,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/fidl-app" />
+            <option value="$PROJECT_DIR$/client-app" />
+            <option value="$PROJECT_DIR$/service-app" />
             <option value="$PROJECT_DIR$/service-artifacts" />
           </set>
         </option>
