@@ -1,1 +1,2 @@
 include ':fidl-app'
+include ':fidl-app-artifacts'
